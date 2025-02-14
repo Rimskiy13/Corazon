@@ -1,0 +1,93 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+    overflow: hidden;
+}
+
+.animation-container {
+    position: relative;
+}
+
+.heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: beat 0.5s infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.heart span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(45deg);
+    z-index: 1; /* Asegura que el texto esté por encima del corazón */
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -75px;
+    left: 0;
+}
+
+.heart::after {
+    left: 75px;
+    top: 0;
+}
+
+@keyframes beat {
+    0% {
+        transform: scale(1) rotate(-45deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(-45deg);
+    }
+}
+
+.falling-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 80%, 15% 100%, 0% 35%);
+    animation: fall 5s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% {
+        top: -20px;
+        opacity: 1;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
